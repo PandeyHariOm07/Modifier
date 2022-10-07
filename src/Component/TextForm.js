@@ -16,7 +16,18 @@ export default function TextForm(props) {
         // console.log("On Change");
         setText(event.target.value);
     }
-    const [text,setText] = useState('Enter text Here');
+    const handleFirstCapital =()=>{
+      let a = text.split(" ");
+      let b="";
+      for(let i=0;i<a.length;i++){
+          b+=a[i].charAt(0).toUpperCase();
+          b+=a[i].substring(1);
+          b+=" ";
+      }
+      setText(b.trim());
+
+    }
+    const [text,setText] = useState('');
   return (
     <>
     <div className='container'>
@@ -26,7 +37,7 @@ export default function TextForm(props) {
         </div>
         <button className='btn btn-primary mx-1' onClick={handleUpClick}>Convert To UpperCase</button>
         <button className='btn btn-primary mx-1' onClick={handleLowClick}>Convert To LowerCase</button>
-
+        <button className='btn btn-primary mx-1' onClick={handleFirstCapital}>Convert To CapitalCase</button>
     </div>
     <div className="container my-4">
       <h3>Your Text Summery</h3>
